@@ -1,243 +1,32 @@
 <!DOCTYPE html>
-  
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
   <div class="calculator">
-   <div class="display"> created by caoson167 </div>
-
-   <div class="btn">
-     <div class="container-number">
-        <button class="basic">9</button>
-        <button class="basic">8</button>
-        <button class="basic">7</button>
-        <button class="basic">6</button>
-        <button class="basic">2</button>
-        <button class="basic">3</button> 
-        <button class="basic">4</button>
-        <button class="basic">5</button>
-        <button class="basic">1</button>
-        <button class="basic" id ="zero">0</button>
-        <button class="result">=</button>
-        <button class="basic">.</button>
-     </div>
-     <div class="container-operator">
-        <button class="plus-minus">+</button>
-        <button class="plus-minus">-</button>
-        <button class="mul-div">x</button>
-        <button class="mul-div">:</button>
-     </div>
-     <div class="container-delete">
-        <button class="back">Back</button>   
-        <button class="redo">Clear</button>
-     </div>
-   </div>
+    <div class="display"> created by caoson167 </div>
+    <div class="btn">
+      <div class="container-number">
+          <button class="basic">9</button>
+          <button class="basic">8</button>
+          <button class="basic">7</button>
+          <button class="basic">6</button>
+          <button class="basic">2</button>
+          <button class="basic">3</button> 
+          <button class="basic">4</button>
+          <button class="basic">5</button>
+          <button class="basic">1</button>
+          <button class="basic" id ="zero">0</button>
+          <button class="result">=</button>
+          <button class="basic">.</button>
+      </div>
+      <div class="container-operator">
+          <button class="plus-minus">+</button>
+          <button class="plus-minus">-</button>
+          <button class="mul-div">x</button>
+          <button class="mul-div">:</button>
+      </div>
+      <div class="container-delete">
+          <button class="back">Back</button>   
+          <button class="redo">Clear</button>
+      </div>
+    </div>
   </div>
- <style>
-   
-   .container-number{
-     display: grid;
-     grid-template-columns: repeat(4, 5fr);
-     grid-gap: 10px;
-     margin-left: 450px;
-     margin-right: 450px;
-   }
-   .container-delete{
-     margin-top :10px;
-     display: grid;
-     grid-template-columns: repeat(2, 5fr);
-     grid-gap: 10px;
-     margin-left: 450px;
-     margin-right: 450px;
-   }
-   .container-operator {
-     margin-top :10px;
-     display: grid;
-     grid-template-columns: repeat(4, 5fr);
-     grid-gap: 10px;
-     margin-left: 450px;
-     margin-right: 450px;
-   }
-   button{
-     
-     color: rgb(219, 140, 70) !important;
-     font-size: xx-large;
-     border: .4rem solid ffe6ff;     
-     text-decoration: none;
-     background:#0c4647;
-     padding: 20px;
-     border-radius: 5px;
-     display: inline-block;
-     border: none;
-     transition: all 0.4s ease 0s;
-   }
-   
-
-   button:hover {
-     text-shadow: 0 0 0.6rem #ffe6ff, 0 0 1.5rem #e8ff65,
-       -0.2rem 0.1rem 1rem #ffcb9a, 0.2rem 0.1rem 1rem #ffcb9a,
-       0 -0.5rem 2rem #ffcb9a, 0 0.5rem 3rem #ebb60a;
-     box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
-     transition: all 0.4s ease 0s;
-     transform: scale(1.1);
-   }
-   
-   .clicking {
-     transform: scale(2);
-     border-color: #ca185c ;
-     box-shadow: 0 0 1rem #ca185c;
-   }
-
-   .display{
-     min-height: 30px;
-     max-height: 30px;
-     padding-top: 30px;
-     padding-bottom: 30px;
-     margin-top: 50px;
-     margin-bottom: 20px;
-     margin-left: 450px;
-     margin-right: 450px;
-     font-size: xx-large;
-     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-     background-color: #2C3531;
-     box-shadow: 0px 5px 40px -10px rgba(6, 168, 133, 0.57);
-   }
-
-   body{
-     background-color: black;
-     text-shadow: 0 0 0.6rem #ffe6ff, 0 0 1.5rem #e8ff65,
-       -0.2rem 0.1rem 1rem #00d9ff, 0.2rem 0.1rem 1rem #ffcb9a,
-       0 -0.5rem 2rem #ffcb9a, 0 0.5rem 3rem #00fb7e;
-     
-     color: #0c4647;
-     text-align: center;
-   }
-
- </style>
- <script>
-    //calcule operators
-function add(a,b) {return a+b;}
-function substract(a,b) {return a-b;}
-function multiply(a,b) {return a*b;}
-function divide(a,b) {return a/b;}
-function operate(operator,a,b){
-  let result = 0;
-  if (a == "" || b == "") return;
-  a *= 1;//turn string to number
-  b *= 1;
-  if (operator == "+") result = add(a,b);
-  if (operator == "-") result = substract(a,b);
-  if (operator == ":") result = divide(a,b);
-  if (operator == "x") result = multiply(a,b);
-  return Math.round(result * 100) / 100;//round the result up to 2 decimals
-}
-
-function clear() {
- opTag = "";
- opTagMulDiv ="";
- currentNum ="";
- firstNum ="";
- secondNum ="";
- 
-}
-
-let opTag = ""; // to store current operator
-let opTagMulDiv ="";// to store an operator exception
-let currentNum ="";//to store the displayed number
-let firstNum ="";//
-let secondNum ="";//used for exception cases
-
-const display = document.querySelector(".display");
-
-//numbers button
-const basicButtons = document.querySelectorAll(".basic");
-  for (let i = 0; i < basicButtons.length; i++){
-    let nameTag = basicButtons[i].innerHTML;
-    basicButtons[i].addEventListener("click", event => {
-      if (currentNum.indexOf(".")>= 0 && nameTag == ".") nameTag = "";
-      
-      currentNum += nameTag;
-      
-      if (/^0/.test(display.innerHTML)) {currentNum = nameTag}
-      
-      display.innerHTML = currentNum;
-
-      if (opTagMulDiv != "") {// 2 + 3 * 5 -> finished route
-        let exception1 = operate(opTagMulDiv,secondNum, currentNum); //3*5
-        display.innerHTML = operate(opTag,firstNum,exception1)// 2+ (3*5) -> display this
-        console.log(opTagMulDiv,currentNum, secondNum);
-        clear();
-        firstNum = display.innerHTML; // store 17
-      } 
-      
-    })
-  
-
-}
-
-//operators button
-const plusMinusButtons = document.querySelectorAll(".plus-minus");
-for (let i =0 ; i< plusMinusButtons.length; i++){
-  plusMinusButtons[i].addEventListener("click", event => {
-    let nameTag = plusMinusButtons[i].innerHTML;
-    if (opTag == "+" || opTag == "-") {//2+3+ -> finished route
-      display.innerHTML = operate(opTag,firstNum,currentNum); //2+3=5 -> display 5
-      clear();
-      
-    }
-    currentNum ="";
-    firstNum = display.innerHTML;
-    opTag = nameTag;
-    console.log(firstNum, secondNum, currentNum)
-  })
-}
-
-const mulDivButtons = document.querySelectorAll(".mul-div");
-for (let i =0 ; i< mulDivButtons.length; i++){
-  mulDivButtons[i].addEventListener("click", event => {
-    
-    let nameTag = mulDivButtons[i].innerHTML;
-    if (opTag == "+" || opTag == "-") {//2+3x -> firstNum = 2, opTag = +
-      opTagMulDiv = nameTag; //opTagMulDiv = *
-      secondNum = display.innerHTML; // secondNum = 3
-    }
-    if (opTag == "x" || opTag ==":") { // 2 * 5-> finished route
-      display.innerHTML = operate(opTag,firstNum,currentNum);// 2*5 = 10 -> display 10
-      clear();
-      firstNum = display.innerHTML;//store 10
-      opTag = nameTag;//store current operator 10 * 
-    }
-       
-    else {//2*
-      firstNum = display.innerHTML;
-      opTag =nameTag;
-    }
-    currentNum ="";
-    console.log(firstNum, secondNum, currentNum)
-  })
- 
-
-}
-//clear button
-const clearButton = document.querySelector(".redo");
-clearButton.addEventListener("click", event => {
-    clear();
-    display.innerHTML = "";
-});
-//back button
-const backButton = document.querySelector(".back");
-backButton.addEventListener("click", event => {
-  currentNum = currentNum.substring(0,currentNum.length -1);
-  display.innerHTML = currentNum;
-})
-//result button
-const result = document.querySelector(".result");
-result.addEventListener("click", event => {
-    if (!firstNum || !opTag) return;
-    currentNum = display.innerHTML;
-    display.innerHTML = operate(opTag, firstNum, currentNum);
-    clear();
-    firstNum = display.innerHTML;
-    console.log(firstNum, secondNum, currentNum)
-})
-
-  
-
- </script>
